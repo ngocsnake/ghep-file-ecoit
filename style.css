@@ -30,14 +30,14 @@ button {
     background-color: #008CBA;
     border: none;
     color: white;
-    padding: 15px 32px;
+    padding: 15px 37px;
     text-align: center;
     font-size: 16px;
 }
 
 .input-file-container {
     position: relative;
-    width: 225px;
+    width: 325px;
 }
 
 .js .input-file-trigger {

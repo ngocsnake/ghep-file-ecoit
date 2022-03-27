@@ -1,10 +1,11 @@
 <html>
-
 <head>
     <meta charset="utf-8" />
     <script src="https://unpkg.com/pdf-lib@1.4.0"></script>
     <script src="https://unpkg.com/downloadjs@1.4.7"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="./logo.png">
+    <title>d. ngoc</title>
 </head>
 
 <body>
@@ -14,72 +15,22 @@
 
     <div class="input-file-container">
         <input class="input-file" type="file" id="filesbia" name="filesbia">
-        <label style="text-align: center" tabindex="0" class="input-file-trigger" for="filesbia">Chọn trang bìa</label>
+        <label style="text-align: center" tabindex="0" class="input-file-trigger" for="filesbia" id="tenFileBia">Chọn trang bìa</label>
     </div>
 
     <br>
 
     <div class="input-file-container">
         <input class="input-file" type="file" id="files" name="files" multiple>
-        <label style="text-align: center" tabindex="0" class="input-file-trigger" for="files">Chọn trang ghép</label>
+        <label style="text-align: center" tabindex="0" class="input-file-trigger" for="files" id="countFiles">Chọn trang ghép</label>
     </div>
 
     <br>
 
     <button onclick="ghepFile()" class="nut">Ghép</button>
 
+
+    <script src="./savePDF.js"></script>
     <script src="./script.js"></script>
 </body>
-
-<script>
-    const { degrees, PDFDocument, rgb, StandardFonts } = PDFLib;
-    let arrayURL = []
-
-    async function modifyPdf(arrayURL) {
-        const bfinal = await fetch(arrayURL[0]).then(res => res.arrayBuffer())
-
-        console.log(bfinal);
-
-        const finalPDF = await PDFDocument.load(bfinal);
-
-        for (let i = 1; i < arrayURL.length; i++) {
-            const existingPdfBytes = await fetch(arrayURL[i]).then(res => res.arrayBuffer())
-            const fileADD = await PDFDocument.load(existingPdfBytes);
-
-            const pagesArray = await finalPDF.copyPages(fileADD, fileADD.getPageIndices());
-
-            for (let i = 1; i < pagesArray.length; i++) {
-                finalPDF.addPage(pagesArray[i]);
-            }
-        }
-
-        const pdfBytes = await finalPDF.save()
-        download(pdfBytes, "pdf-lib_creation_example.pdf", "application/pdf");
-    }
-
-    const input = document.querySelector('#files');
-    const bia = document.querySelector('#filesbia');
-
-
-    input.addEventListener('change', () => {
-        arrayURL = [];
-        arrayURL.push(
-            URL.createObjectURL(bia.files[0])
-        )
-        Array.from(input.files).forEach(file => {
-            arrayURL.push(
-                URL.createObjectURL(file)
-            )
-        })
-    })
-
-
-    const ghepFile = () => {
-        // console.log(arrayURL);
-        modifyPdf(arrayURL);
-    }
-
-
-</script>
-
 </html>
