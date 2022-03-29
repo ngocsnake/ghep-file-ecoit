@@ -1,5 +1,4 @@
 <html>
-
 <head>
     <meta charset="utf-8" />
     <script src="https://unpkg.com/pdf-lib@1.4.0"></script>
@@ -14,30 +13,24 @@
     <h1>Ghép File</h1>
     <h2>from pham ngoc with code 💻</h2>
 
-    <!-- <div class="input-file-container">
+    <div class="input-file-container">
         <input class="input-file" type="file" id="filesbia" name="filesbia">
-        <label style="text-align: center" tabindex="0" class="input-file-trigger" for="filesbia" id="tenFileBia">Chọn
-            trang bìa</label>
-    </div> -->
+        <label style="text-align: center" tabindex="0" class="input-file-trigger" for="filesbia" id="tenFileBia">Chọn trang bìa</label>
+    </div>
 
     <br>
 
     <div class="input-file-container">
         <input class="input-file" type="file" id="files" name="files" multiple>
-        <label style="text-align: center" tabindex="0" class="input-file-trigger" for="files" id="countFiles">Chọn trang
-            ghép</label>
+        <label style="text-align: center" tabindex="0" class="input-file-trigger" for="files" id="countFiles">Chọn trang ghép</label>
     </div>
 
     <br>
-    
+
     <button onclick="ghepFile()" class="nut">Ghép</button>
-    
-    <br>
 
-    <div id="current">nothing here</div>
 
+    <script src="./savePDF.js"></script>
     <script src="./script.js"></script>
-    <script src="./savePDF.js" type = "module"></script>
 </body>
-
 </html>
