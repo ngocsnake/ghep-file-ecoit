@@ -7,6 +7,7 @@ let arrayURL = [];
 const current = document.querySelector('#current');
 
 const input = document.querySelector('#files');
+const ghep = document.querySelector('#ghep');
 
 input.addEventListener('change', () => {
     arrayURL = [];
@@ -27,13 +28,13 @@ input.addEventListener('change', () => {
     document.querySelector('#countFiles').textContent = `Đã chọn ${input.files.length} File. (${niceBytes(totalSize)})`;
 })
 
-const ghepFile = () => {
+ghep.addEventListener('click', () => {
     const isConfirm = confirm('Chắc chắn ghép?');
 
     if (isConfirm) {
         ghepFilePDF(arrayURL)
     }
-}
+})
 
 async function ghepFilePDF(arrayURL) {
 
